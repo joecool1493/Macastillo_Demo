@@ -15,6 +15,21 @@
 		84A399752015554E0069DC3F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84A399732015554E0069DC3F /* Main.storyboard */; };
 		84A399772015554E0069DC3F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84A399762015554E0069DC3F /* Assets.xcassets */; };
 		84A3997A2015554E0069DC3F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84A399782015554E0069DC3F /* LaunchScreen.storyboard */; };
+		84A3998B201558890069DC3F /* laserBeam.png in Resources */ = {isa = PBXBuildFile; fileRef = 84A39983201558890069DC3F /* laserBeam.png */; };
+		84A3998C201558890069DC3F /* gameOver.png in Resources */ = {isa = PBXBuildFile; fileRef = 84A39984201558890069DC3F /* gameOver.png */; };
+		84A3998D201558890069DC3F /* shootButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 84A39985201558890069DC3F /* shootButton.png */; };
+		84A3998E201558890069DC3F /* UFO.png in Resources */ = {isa = PBXBuildFile; fileRef = 84A39986201558890069DC3F /* UFO.png */; };
+		84A3998F201558890069DC3F /* youWin.png in Resources */ = {isa = PBXBuildFile; fileRef = 84A39987201558890069DC3F /* youWin.png */; };
+		84A39990201558890069DC3F /* mainMenu.png in Resources */ = {isa = PBXBuildFile; fileRef = 84A39988201558890069DC3F /* mainMenu.png */; };
+		84A39991201558890069DC3F /* spaceship.png in Resources */ = {isa = PBXBuildFile; fileRef = 84A39989201558890069DC3F /* spaceship.png */; };
+		84A39992201558890069DC3F /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = 84A3998A201558890069DC3F /* spark.png */; };
+		84A39997201558AA0069DC3F /* spaceshipGameBackgroundMusic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 84A39993201558AA0069DC3F /* spaceshipGameBackgroundMusic.mp3 */; };
+		84A39998201558AA0069DC3F /* gameOverSound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 84A39994201558AA0069DC3F /* gameOverSound.mp3 */; };
+		84A39999201558AA0069DC3F /* explosionSound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 84A39995201558AA0069DC3F /* explosionSound.mp3 */; };
+		84A3999A201558AA0069DC3F /* laserBeamSound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 84A39996201558AA0069DC3F /* laserBeamSound.mp3 */; };
+		84A3999C2015677B0069DC3F /* engineExhaust.sks in Resources */ = {isa = PBXBuildFile; fileRef = 84A3999B2015677B0069DC3F /* engineExhaust.sks */; };
+		84A3999E201574610069DC3F /* MainMenuScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A3999D201574610069DC3F /* MainMenuScene.swift */; };
+		84A399A0201574770069DC3F /* GameOverScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A3999F201574770069DC3F /* GameOverScene.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +43,21 @@
 		84A399762015554E0069DC3F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		84A399792015554E0069DC3F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		84A3997B2015554E0069DC3F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		84A39983201558890069DC3F /* laserBeam.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = laserBeam.png; sourceTree = "<group>"; };
+		84A39984201558890069DC3F /* gameOver.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gameOver.png; sourceTree = "<group>"; };
+		84A39985201558890069DC3F /* shootButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shootButton.png; sourceTree = "<group>"; };
+		84A39986201558890069DC3F /* UFO.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = UFO.png; sourceTree = "<group>"; };
+		84A39987201558890069DC3F /* youWin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = youWin.png; sourceTree = "<group>"; };
+		84A39988201558890069DC3F /* mainMenu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mainMenu.png; sourceTree = "<group>"; };
+		84A39989201558890069DC3F /* spaceship.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spaceship.png; sourceTree = "<group>"; };
+		84A3998A201558890069DC3F /* spark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spark.png; sourceTree = "<group>"; };
+		84A39993201558AA0069DC3F /* spaceshipGameBackgroundMusic.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = spaceshipGameBackgroundMusic.mp3; sourceTree = "<group>"; };
+		84A39994201558AA0069DC3F /* gameOverSound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = gameOverSound.mp3; sourceTree = "<group>"; };
+		84A39995201558AA0069DC3F /* explosionSound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = explosionSound.mp3; sourceTree = "<group>"; };
+		84A39996201558AA0069DC3F /* laserBeamSound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = laserBeamSound.mp3; sourceTree = "<group>"; };
+		84A3999B2015677B0069DC3F /* engineExhaust.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = engineExhaust.sks; sourceTree = "<group>"; };
+		84A3999D201574610069DC3F /* MainMenuScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuScene.swift; sourceTree = "<group>"; };
+		84A3999F201574770069DC3F /* GameOverScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverScene.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -44,6 +74,8 @@
 		84A3995D2015554D0069DC3F = {
 			isa = PBXGroup;
 			children = (
+				84A399822015585A0069DC3F /* sounds */,
+				84A39981201558470069DC3F /* images */,
 				84A399682015554D0069DC3F /* macastillo_demo */,
 				84A399672015554D0069DC3F /* Products */,
 			);
@@ -60,7 +92,10 @@
 		84A399682015554D0069DC3F /* macastillo_demo */ = {
 			isa = PBXGroup;
 			children = (
+				84A3999B2015677B0069DC3F /* engineExhaust.sks */,
 				84A399692015554D0069DC3F /* AppDelegate.swift */,
+				84A3999D201574610069DC3F /* MainMenuScene.swift */,
+				84A3999F201574770069DC3F /* GameOverScene.swift */,
 				84A3996B2015554D0069DC3F /* GameScene.sks */,
 				84A3996D2015554D0069DC3F /* Actions.sks */,
 				84A3996F2015554D0069DC3F /* GameScene.swift */,
@@ -71,6 +106,32 @@
 				84A3997B2015554E0069DC3F /* Info.plist */,
 			);
 			path = macastillo_demo;
+			sourceTree = "<group>";
+		};
+		84A39981201558470069DC3F /* images */ = {
+			isa = PBXGroup;
+			children = (
+				84A39984201558890069DC3F /* gameOver.png */,
+				84A39983201558890069DC3F /* laserBeam.png */,
+				84A39988201558890069DC3F /* mainMenu.png */,
+				84A39985201558890069DC3F /* shootButton.png */,
+				84A39989201558890069DC3F /* spaceship.png */,
+				84A3998A201558890069DC3F /* spark.png */,
+				84A39986201558890069DC3F /* UFO.png */,
+				84A39987201558890069DC3F /* youWin.png */,
+			);
+			path = images;
+			sourceTree = "<group>";
+		};
+		84A399822015585A0069DC3F /* sounds */ = {
+			isa = PBXGroup;
+			children = (
+				84A39995201558AA0069DC3F /* explosionSound.mp3 */,
+				84A39994201558AA0069DC3F /* gameOverSound.mp3 */,
+				84A39996201558AA0069DC3F /* laserBeamSound.mp3 */,
+				84A39993201558AA0069DC3F /* spaceshipGameBackgroundMusic.mp3 */,
+			);
+			path = sounds;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -132,10 +193,23 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84A39991201558890069DC3F /* spaceship.png in Resources */,
+				84A3998E201558890069DC3F /* UFO.png in Resources */,
+				84A39997201558AA0069DC3F /* spaceshipGameBackgroundMusic.mp3 in Resources */,
+				84A39998201558AA0069DC3F /* gameOverSound.mp3 in Resources */,
+				84A3999C2015677B0069DC3F /* engineExhaust.sks in Resources */,
 				84A399752015554E0069DC3F /* Main.storyboard in Resources */,
 				84A3996C2015554D0069DC3F /* GameScene.sks in Resources */,
 				84A399772015554E0069DC3F /* Assets.xcassets in Resources */,
+				84A39992201558890069DC3F /* spark.png in Resources */,
+				84A39990201558890069DC3F /* mainMenu.png in Resources */,
+				84A3998D201558890069DC3F /* shootButton.png in Resources */,
+				84A39999201558AA0069DC3F /* explosionSound.mp3 in Resources */,
 				84A3997A2015554E0069DC3F /* LaunchScreen.storyboard in Resources */,
+				84A3998B201558890069DC3F /* laserBeam.png in Resources */,
+				84A3999A201558AA0069DC3F /* laserBeamSound.mp3 in Resources */,
+				84A3998C201558890069DC3F /* gameOver.png in Resources */,
+				84A3998F201558890069DC3F /* youWin.png in Resources */,
 				84A3996E2015554D0069DC3F /* Actions.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -147,8 +221,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84A399A0201574770069DC3F /* GameOverScene.swift in Sources */,
 				84A399702015554D0069DC3F /* GameScene.swift in Sources */,
 				84A399722015554E0069DC3F /* GameViewController.swift in Sources */,
+				84A3999E201574610069DC3F /* MainMenuScene.swift in Sources */,
 				84A3996A2015554D0069DC3F /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
