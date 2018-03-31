@@ -12,18 +12,27 @@ import AVFoundation
 
 class GameScene: SKScene {
     
-    let spaceship = SKSpriteNode(imageNamed: "spaceship")
+    let spaceship = SKSpriteNode(imageNamed: "spaceship3")
+    //let UFO = SKSpriteNode(imageNamed: "Shlorp")
+    let enemy = SKSpriteNode(imageNamed: "CentralGrille")
+    let jordee = SKSpriteNode(imageNamed: "Jordee2")
+    let shelby = SKSpriteNode(imageNamed: "Shelby2")
+    //let laser = SKSpriteNode(imageNamed: "laserBeam")
     var movableNode : SKNode?
     var spaceshipStartX : CGFloat = 0.0
     var spaceshipStartY : CGFloat = 0.0
     
-    let shootButton = SKSpriteNode(imageNamed: "shootButton")
-    let laserBeamSound = SKAction.playSoundFileNamed("laserBeamSound.mp3", waitForCompletion: false)
-    let explosionSound = SKAction.playSoundFileNamed("explosionSound.mp3", waitForCompletion: false)
+   // let shootButton = SKSpriteNode(imageNamed: "button_shlorp")
+    //let laserBeamSound = SKAction.playSoundFileNamed("laserBeamSound.mp3", waitForCompletion: false)
+    let explosionSound = SKAction.playSoundFileNamed("YouAreWeak.mp3", waitForCompletion: false)
+    let shlorpSound = SKAction.playSoundFileNamed("ShlorpSound.mp3", waitForCompletion: false)
+    let jordeeSound = SKAction.playSoundFileNamed("JordeeSound.mp3", waitForCompletion: false)
+    let shelbySound = SKAction.playSoundFileNamed("ShelbySound.mp3", waitForCompletion: false)
     
     let engineExhaust = SKEmitterNode(fileNamed: "engineExhaust.sks")
     
     var spaceshipHit = false
+    var UFOHit = false
     var isPlaying = true
     
     var lives = 3
@@ -37,7 +46,7 @@ class GameScene: SKScene {
         
         playBackgroundMusic()
         
-        livesLabel.text = "Lives: \(lives)"
+        livesLabel.text = "Gains: \(lives)"
         livesLabel.fontColor = SKColor.white
         livesLabel.fontSize = 75
         livesLabel.zPosition = 10
@@ -59,22 +68,47 @@ class GameScene: SKScene {
         
         //animateSpaceship()
         
-        shootButton.position = CGPoint(x: self.size.width * 0.8, y: self.size.height * 0.15)
+      /*  shootButton.position = CGPoint(x: self.size.width * 0.8, y: self.size.height * 0.15)
         shootButton.anchorPoint = CGPoint(x: 0.5, y: 0.5)
-        shootButton.setScale(0.15)
+        shootButton.setScale(1.5)
         shootButton.zPosition = 10
         shootButton.name = "shoot"
-        addChild(shootButton)
+        addChild(shootButton) */
         
         addStarFields()
         //spawnUFO()
         
-        let wait = SKAction.wait(forDuration: 2.0)
+        let wait = SKAction.wait(forDuration: 2.1)
         let constantSpawning = SKAction.run {
             self.spawnUFO()
+            //self.spawnEnemy()
         }
         let spawnSequence = SKAction.sequence([wait, constantSpawning])
         run(SKAction.repeatForever(spawnSequence))
+        
+        let wait2 = SKAction.wait(forDuration: 0.6)
+        let constantSpawning2 = SKAction.run {
+            //self.spawnUFO()
+            self.spawnEnemy()
+        }
+        let spawnSequence2 = SKAction.sequence([wait2, constantSpawning2])
+        run(SKAction.repeatForever(spawnSequence2))
+        
+        let wait3 = SKAction.wait(forDuration: 15.0)
+        let constantSpawning3 = SKAction.run {
+            //self.spawnUFO()
+            self.spawnJordee()
+        }
+        let spawnSequence3 = SKAction.sequence([wait3, constantSpawning3])
+        run(SKAction.repeatForever(spawnSequence3))
+        
+        let wait4 = SKAction.wait(forDuration: 20.5)
+        let constantSpawning4 = SKAction.run {
+            //self.spawnUFO()
+            self.spawnShelby()
+        }
+        let spawnSequence4 = SKAction.sequence([wait4, constantSpawning4])
+        run(SKAction.repeatForever(spawnSequence4))
         
         
     }
@@ -94,10 +128,10 @@ class GameScene: SKScene {
                 
             }
             
-            if touchedNode.name == "shoot" {
+          /*  if touchedNode.name == "shoot" {
                 self.run(laserBeamSound)
                 shootLaserBeam()
-            }
+            } */
             
         }
         }
@@ -131,7 +165,7 @@ class GameScene: SKScene {
     
     
     override func update(_ currentTime: TimeInterval) {
-        livesLabel.text = "Lives: \(lives)"
+        livesLabel.text = "GAINS: \(lives)"
         checkLives()
     }
     
@@ -141,7 +175,7 @@ class GameScene: SKScene {
     
     func checkLives() {
         
-        if lives == 0 && isPlaying == true {
+        if lives <= 0 && isPlaying == true {
             
             isPlaying = false
             backgroundMusicPlayer.stop()
@@ -171,7 +205,77 @@ class GameScene: SKScene {
                     return
                 }
             }
+            
         }
+        
+        //Did Enemy hit spaceship?
+        enumerateChildNodes(withName: "enemy") {
+            node, _ in
+            let enemy = node as! SKSpriteNode
+            
+            if enemy.frame.intersects(self.spaceship.frame) {
+                
+                if self.spaceshipHit == false {
+                    self.spaceshipHitByEnemy()
+                    print("ENEMY HIT SPACESHIP")
+                } else if self.spaceshipHit == true {
+                    return
+                }
+            }
+            
+        }
+        
+        enumerateChildNodes(withName: "jordee") {
+            node, _ in
+            let jordee = node as! SKSpriteNode
+            
+            if jordee.frame.intersects(self.spaceship.frame) {
+                
+                if self.spaceshipHit == false {
+                    self.spaceshipHitByJordee()
+                    print("JORDEE HIT SPACESHIP")
+                } else if self.spaceshipHit == true {
+                    return
+                }
+            }
+            
+        }
+        
+        enumerateChildNodes(withName: "shelby") {
+            node, _ in
+            let shelby = node as! SKSpriteNode
+            
+            if shelby.frame.intersects(self.spaceship.frame) {
+                
+                if self.spaceshipHit == false {
+                    self.spaceshipHitByShelby()
+                    print("SHELBY HIT SPACESHIP")
+                } else if self.spaceshipHit == true {
+                    return
+                }
+            }
+            
+        }
+        
+        //Did Laser hit UFO?
+        
+       /*  enumerateChildNodes(withName: "laser") {
+            node, _ in
+            let laser = node as! SKSpriteNode
+            
+            if laser.frame.intersects(self.UFO.frame) {
+                
+                if self.UFOHit == false {
+                    self.UFOHitByLaser()
+                    print("LASER HIT UFO")
+                } else if self.UFOHit == true {
+                    return
+                }
+            }
+            
+        } */
+        
+        
         
         //CHALLENGE: COME BACK TO THIS TO SOLVE FOR LASER/UFO CONTACT. HINT: USE PHYSICS BODIES.
         
@@ -190,8 +294,8 @@ class GameScene: SKScene {
     
     func spawnUFO() {
         
-        let UFO = SKSpriteNode(imageNamed: "UFO")
-        UFO.setScale(0.15)
+        let UFO = SKSpriteNode(imageNamed: "Shlorp")
+        UFO.setScale(0.3)
         UFO.zPosition = 7
         UFO.name = "UFO"
         UFO.position = CGPoint(x: CGFloat.random(min: -200, max: self.size.width + 200), y: self.size.height + 200)
@@ -203,17 +307,128 @@ class GameScene: SKScene {
         UFO.run(SKAction.repeatForever(fullTwist))
         
         let x = CGFloat.random(min: 0, max: self.size.width)
-        let UFOMove = SKAction.move(to: CGPoint(x: x, y: -200), duration: 2.5)
+        let UFOMove = SKAction.move(to: CGPoint(x: x, y: -200), duration: 2.1)
         let remove = SKAction.removeFromParent()
         let sequence = SKAction.sequence([UFOMove, remove])
         UFO.run(sequence)
+    }
+    
+    func spawnEnemy() {
+        
+        let enemy = SKSpriteNode(imageNamed: "CentralGrille")
+        enemy.setScale(1.1)
+        enemy.zPosition = 7
+        enemy.name = "enemy"
+        enemy.position = CGPoint(x: CGFloat.random(min: -100, max: self.size.width + 200), y: self.size.height + 100)
+        addChild(enemy)
+        
+        let leftTwist = SKAction.rotate(byAngle: 3.14 / 7.0, duration: 0.5)
+        let rightTwist = leftTwist.reversed()
+        let fullTwist = SKAction.sequence([leftTwist, rightTwist])
+        enemy.run(SKAction.repeatForever(fullTwist))
+        
+        let x = CGFloat.random(min: 0, max: self.size.width)
+        let enemyMove = SKAction.move(to: CGPoint(x: x, y: -100), duration: 1.1)
+        let remove = SKAction.removeFromParent()
+        let sequence = SKAction.sequence([enemyMove, remove])
+        enemy.run(sequence)
+    }
+    
+    func spawnJordee() {
+        
+        let jordee = SKSpriteNode(imageNamed: "Jordee2")
+        jordee.setScale(0.7)
+        jordee.zPosition = 7.1
+        jordee.name = "jordee"
+        jordee.position = CGPoint(x: CGFloat.random(min: -50, max: self.size.width + 200), y: self.size.height + 50)
+        addChild(jordee)
+        
+        let leftTwist = SKAction.rotate(byAngle: 3.14 / 6.0, duration: 0.5)
+        let rightTwist = leftTwist.reversed()
+        let fullTwist = SKAction.sequence([leftTwist, rightTwist])
+        jordee.run(SKAction.repeatForever(fullTwist))
+        
+        let x = CGFloat.random(min: 0, max: self.size.width)
+        let jordeeMove = SKAction.move(to: CGPoint(x: x, y: -100), duration: 1.7)
+        let remove = SKAction.removeFromParent()
+        let sequence = SKAction.sequence([jordeeMove, remove])
+        jordee.run(sequence)
+    }
+    
+    func spawnShelby() {
+        
+        let shelby = SKSpriteNode(imageNamed: "Shelby2")
+        shelby.setScale(0.75)
+        shelby.zPosition = 7.2
+        shelby.name = "shelby"
+        shelby.position = CGPoint(x: CGFloat.random(min: -25, max: self.size.width + 200), y: self.size.height + 25)
+        addChild(shelby)
+        
+        let leftTwist = SKAction.rotate(byAngle: 3.14 / 5.0, duration: 0.5)
+        let rightTwist = leftTwist.reversed()
+        let fullTwist = SKAction.sequence([leftTwist, rightTwist])
+        shelby.run(SKAction.repeatForever(fullTwist))
+        
+        let x = CGFloat.random(min: 0, max: self.size.width)
+        let shelbyMove = SKAction.move(to: CGPoint(x: x, y: -100), duration: 1.5)
+        let remove = SKAction.removeFromParent()
+        let sequence = SKAction.sequence([shelbyMove, remove])
+        shelby.run(sequence)
     }
     
     func spaceshipHitByUFO() {
         
         spaceshipHit = true
         
+        let blinkTimes = 2.0
+        let duration = 0.5
+        let blinkAction = SKAction.customAction(withDuration: duration) {
+            node, elapsedTime in
+            let slice = duration / blinkTimes
+            let remainder = Double(elapsedTime).truncatingRemainder(dividingBy: slice)
+            node.isHidden = remainder > slice / 2
+        }
+        let setHidden = SKAction.run() {
+            [ weak self] in
+            self?.spaceship.isHidden = false
+            self?.spaceshipHit = false
+        }
+        
+        spaceship.run(SKAction.sequence([blinkAction, setHidden]))
+        run(shlorpSound)
+        
+        lives = lives + 1
+    }
+    
+    func spaceshipHitByEnemy() {
+        
+        spaceshipHit = true
+        
         let blinkTimes = 15.0
+         let duration = 3.0
+         let blinkAction = SKAction.customAction(withDuration: duration) {
+         node, elapsedTime in
+         let slice = duration / blinkTimes
+         let remainder = Double(elapsedTime).truncatingRemainder(dividingBy: slice)
+         node.isHidden = remainder > slice / 2
+         }
+         let setHidden = SKAction.run() {
+         [ weak self] in
+         self?.spaceship.isHidden = false
+         self?.spaceshipHit = false
+         }
+         
+         spaceship.run(SKAction.sequence([blinkAction, setHidden]))
+        run(explosionSound)
+        
+        lives = lives - 1
+    }
+    
+    func spaceshipHitByJordee() {
+        
+        spaceshipHit = true
+        
+        let blinkTimes = 10.0
         let duration = 3.0
         let blinkAction = SKAction.customAction(withDuration: duration) {
             node, elapsedTime in
@@ -228,10 +443,58 @@ class GameScene: SKScene {
         }
         
         spaceship.run(SKAction.sequence([blinkAction, setHidden]))
+        run(jordeeSound)
+        
+        lives = lives - 4
+    }
+    
+    func spaceshipHitByShelby() {
+        
+        spaceshipHit = true
+        
+        let blinkTimes = 7.0
+        let duration = 3.0
+        let blinkAction = SKAction.customAction(withDuration: duration) {
+            node, elapsedTime in
+            let slice = duration / blinkTimes
+            let remainder = Double(elapsedTime).truncatingRemainder(dividingBy: slice)
+            node.isHidden = remainder > slice / 2
+        }
+        let setHidden = SKAction.run() {
+            [ weak self] in
+            self?.spaceship.isHidden = false
+            self?.spaceshipHit = false
+        }
+        
+        spaceship.run(SKAction.sequence([blinkAction, setHidden]))
+        run(shelbySound)
+        
+        lives = lives - 5
+    }
+    
+   /* func UFOHitByLaser() {
+        
+        UFOHit = true
+        
+        let blinkTimes = 15.0
+        let duration = 3.0
+        let blinkAction = SKAction.customAction(withDuration: duration) {
+            node, elapsedTime in
+            let slice = duration / blinkTimes
+            let remainder = Double(elapsedTime).truncatingRemainder(dividingBy: slice)
+            node.isHidden = remainder > slice / 2
+        }
+        let setHidden = SKAction.run() {
+            [ weak self] in
+            self?.UFO.isHidden = false
+            self?.UFOHit = false
+        }
+        
+        UFO.run(SKAction.sequence([blinkAction, setHidden]))
         run(explosionSound)
         
-        lives = lives - 1
-    }
+        lives = lives + 1
+    } */
     
     func shootLaserBeam() {
         
@@ -308,9 +571,9 @@ class GameScene: SKScene {
         
         do {
             
-            let path = Bundle.main.path(forResource: "spaceshipGameBackgroundMusic", ofType: "mp3")
+            let path = Bundle.main.path(forResource: "21Shots", ofType: "mp3")
             backgroundMusicPlayer = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: path!))
-            backgroundMusicPlayer.volume = 1.0
+            backgroundMusicPlayer.volume = 0.5
             backgroundMusicPlayer.numberOfLoops = -1
             backgroundMusicPlayer.prepareToPlay()
             backgroundMusicPlayer.play()

@@ -9,8 +9,11 @@
 import UIKit
 import SpriteKit
 import GameplayKit
+import AVFoundation
 
 class GameViewController: UIViewController {
+    
+    var shakeAudioPlayer: AVAudioPlayer?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,6 +50,33 @@ skView.presentScene(scene)
 
     override var shouldAutorotate: Bool {
         return true
+    }
+    
+    override func motionEnded(_ motion: UIEventSubtype, with event: UIEvent?) {
+        if motion == .motionShake {
+            let randomNumber = arc4random_uniform(2)
+            if randomNumber == 0 {
+                do {
+                    let path = Bundle.main.path(forResource: "Macastando", ofType: "mp3")
+                    shakeAudioPlayer = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: path!))
+                    shakeAudioPlayer?.volume = 0.8
+                    shakeAudioPlayer?.prepareToPlay()
+                    shakeAudioPlayer?.play()
+                } catch {
+                    print("error loading audio file")
+                }
+            } else {
+                do {
+                    let path = Bundle.main.path(forResource: "Macastillo", ofType: "mp3")
+                    shakeAudioPlayer = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: path!))
+                    shakeAudioPlayer?.volume = 0.8
+                    shakeAudioPlayer?.prepareToPlay()
+                    shakeAudioPlayer?.play()
+                } catch {
+                    print("error loading audio file")
+                }
+            }
+        }
     }
 
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {

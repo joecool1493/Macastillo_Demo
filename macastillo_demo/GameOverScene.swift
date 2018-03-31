@@ -15,15 +15,15 @@ class GameOverScene: SKScene {
         
 /*CHALLENGE: IMPLEMENT CODE TO DETERMINE IF PLAYER WINS. AND INCLUDE A WIN SCREEN. PLAYER GETTING A CERTAIN AMOUNT OF POINTS?*/
         
-        run(SKAction.playSoundFileNamed("gameOverSound.mp3", waitForCompletion: false))
+        run(SKAction.playSoundFileNamed("smallMuscles.mp3", waitForCompletion: false))
         
         
-        let background = SKSpriteNode(imageNamed: "gameOver")
+        let background = SKSpriteNode(imageNamed: "MaxGameOver")
         background.anchorPoint = CGPoint(x: 0.5, y: 0.5)
         background.position = CGPoint(x: size.width / 2, y: size.height / 2)
         self.addChild(background)
         
-        let wait = SKAction.wait(forDuration: 4.0)
+        let wait = SKAction.wait(forDuration: 4.5)
         let block = SKAction.run {
             
             let myScene = MainMenuScene(size: self.size)
